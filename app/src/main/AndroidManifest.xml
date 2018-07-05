@@ -17,10 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity" />
-        <activity android:name=".AccountActivity"></activity>
-        <activity android:name=".Settings">
-            
-        </activity>
+        <activity android:name=".AccountActivity" />
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".FullNoticeActivity"></activity>
     </application>
 
 </manifest>
