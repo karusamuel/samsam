@@ -18,8 +18,9 @@
         </activity>
         <activity android:name=".Main2Activity" />
         <activity android:name=".AccountActivity" />
-        <activity android:name=".Settings"></activity>
-        <activity android:name=".FullNoticeActivity"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".FullNoticeActivity" />
+        <activity android:name=".WebViewActivity"></activity>
     </application>
 
 </manifest>

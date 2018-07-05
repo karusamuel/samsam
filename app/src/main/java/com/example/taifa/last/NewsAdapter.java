@@ -5,9 +5,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
     Context context;
+    int[] images = new int[]{};
+    String[] headlines = new String[]{};
+    String[] shortStory = new String[] {};
+    String[] time = new String[]{};
+
     public NewsAdapter(Context context){
 
 
@@ -33,9 +40,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
 
 
     class MyHolder extends RecyclerView.ViewHolder{
+        TextView headline;
+        TextView story;
+        TextView date;
+        ImageView newHealdlineImage;
 
         public MyHolder(View view){
             super(view);
+            headline = view.findViewById(R.id.newsHeadlineTextview);
+            story =view.findViewById(R.id.shortNewsTextView);
+            date = view.findViewById(R.id.newsTimeTextView);
+            newHealdlineImage = view.findViewById(R.id.newsimageView);
 
 
 

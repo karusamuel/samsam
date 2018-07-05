@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/notificationImage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
@@ -23,12 +23,12 @@
             app:srcCompat="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/notificationTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/imageView2"
-            android:layout_toRightOf="@+id/imageView2"
+            android:layout_toEndOf="@+id/notificationImage"
+            android:layout_toRightOf="@+id/notificationImage"
             android:text="TextView" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>
