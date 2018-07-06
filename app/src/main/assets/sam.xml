@@ -1,12 +1,38 @@
 <Timetable>
-<unit name="Computer Graphics">
     <ComputerScience>
-    <code>SCS B56</code>
-    <day>Monday</day>
-    <time>7:00</time>
-    <venue>Pl9</venue>
-    <lecture>Madam limo</lecture>
-    <course>Computer Science</course>
+        <unit name="Computer Graphics">
+            <code>SCS B256</code>
+            <day>Monday</day>
+            <time>2:00PM</time>
+            <venue>Pl9</venue>
+            <lecture>Madam limo</lecture>
+            <course>BSC Computer Science</course>
+        </unit>
+        <unit name="Simulation and Modeling">
+            <code>SCS B257</code>
+            <day>Monday</day>
+            <time>11:00AM</time>
+            <venue>Pl9</venue>
+            <lecture>M.s Heroe</lecture>
+            <course>BSC Computer Science</course>
+        </unit>
+        <unit name="E-commerce">
+            <code>SCS B268</code>
+            <day>Tuesday</day>
+            <time>7:00 AM</time>
+            <venue>Pl9</venue>
+            <lecture>P.Arnold</lecture>
+            <course>BED Computer Maths</course>
+        </unit>
+        <unit name="Compiler Construction">
+            <code>SCS B846</code>
+            <day>Monday</day>
+            <time>7:00</time>
+            <venue>Pl9</venue>
+            <lecture>Z.mwangi</lecture>
+            <course>BED Computer Maths</course>
+        </unit>
+
+
     </ComputerScience>
-</unit>
 </Timetable>

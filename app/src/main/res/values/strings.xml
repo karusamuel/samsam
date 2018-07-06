@@ -28,22 +28,23 @@
         <item>12.06.2015</item>
     </string-array>
     <string-array name="url">
-        <item>www.google.com</item>
-        <item>www.google.com</item>
-        <item>www.google.com</item>
-        <item>www.google.com</item>
-        <item>www.google.com</item>
-        <item>www.google.com</item>
-        <item>www.google.com</item>
+        <item>https://www.google.com</item>
+        <item>https://www.google.com</item>
+        <item>https://www.google.com</item>
+        <item>https://www.google.com</item>
+        <item>https://www.google.com</item>
+        <item>https://www.google.com</item>
+        <item>https://www.google.com</item>
     </string-array>
     <string-array name="Notifications">
-        <item>www.google.com</item>
-        <item>www.google.com</item>
-        <item>www.google.com</item>
-        <item>www.google.com</item>
+        <item>Exams moved to  16th</item>
+        <item>Cultural to start on Friday</item>
+        <item>Clear Fees before Exams</item>
+        <item>Movie night Today LTN hall entry KSH 50 </item>
     </string-array>
 
     <string-array name="boardTime">
+        <item>6.10.2018 20:00</item>
         <item>6.10.2018 20:00</item>
         <item>6.10.2018 20:00</item>
         <item>6.10.2018 20:00</item>

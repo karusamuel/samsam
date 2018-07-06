@@ -68,7 +68,7 @@ public class TimetableDatabaseHelper extends SQLiteOpenHelper {
         TimetableContract contract ;
         ArrayList<TimetableContract> list = new ArrayList<>();
         SQLiteDatabase myDb = getReadableDatabase();
-        Cursor cursor = myDb.rawQuery("SELECT* FROM " + TABLENAME +" WHERE "+UNITCOURSE+" = " + course ,null);
+        Cursor cursor = myDb.rawQuery("SELECT* FROM " + TABLENAME +" WHERE "+UNITCOURSE+"=?",new String[]{course});
         if(cursor.moveToFirst()){
             do{
                 contract =  new TimetableContract();
@@ -93,7 +93,7 @@ public class TimetableDatabaseHelper extends SQLiteOpenHelper {
         TimetableContract contract ;
         ArrayList<TimetableContract> list = new ArrayList<>();
         SQLiteDatabase myDb = getReadableDatabase();
-        Cursor cursor = myDb.rawQuery("SELECT "+UNITCOURSE+" FROM " + TABLENAME,null);
+        Cursor cursor = myDb.rawQuery("SELECT DISTINCT "+UNITCOURSE+" FROM " + TABLENAME,null);
         if(cursor.moveToFirst()){
             do{
                 contract =  new TimetableContract();

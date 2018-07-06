@@ -12,13 +12,14 @@ import android.widget.TextView;
 
 public class NoticeBoardAdapter extends RecyclerView.Adapter<NoticeBoardAdapter.MyHolder> {
     Context context;
-    int[] board = new int[]{};
-    String[] boardTime = new String[]{};
-    String[] boardDescription = new String[]{};
+    int[] board = new int[]{R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2};
+    String[] boardTime;
+
     public NoticeBoardAdapter(Context context){
 
 
         this.context=context;
+        boardTime = context.getResources().getStringArray(R.array.boardTime);
     }
 
     public  MyHolder onCreateViewHolder(ViewGroup parent,int type){
@@ -28,11 +29,15 @@ public class NoticeBoardAdapter extends RecyclerView.Adapter<NoticeBoardAdapter.
     }
 
     public void onBindViewHolder(MyHolder holder, final int position){
+        holder.noticeBoardImageView.setImageResource(board[position]);
+        holder.noticeTime.setText(board[position]);
         holder.noticeBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(context,FullNoticeActivity.class);
                 intent.putExtra("id", board[position]);
+                context.startActivity(intent);
             }
         });
 

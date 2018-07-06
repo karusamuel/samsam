@@ -29,6 +29,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     public void onBindViewHolder(MyHolder holder,int position){
+        holder.notificationTextView.setText(notificationText[position]);
 
 
     }

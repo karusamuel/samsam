@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAlignment="center"
+        android:visibility="invisible"
         />
 
     <TextView

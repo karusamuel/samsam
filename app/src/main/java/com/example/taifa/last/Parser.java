@@ -119,6 +119,8 @@ public class Parser {
             TimetableDatabaseHelper helper = new TimetableDatabaseHelper(context);
             do {
                 helper.insertData(list.remove(0));
+                Log.e("Parsed","inserted");
+
             }while (list.isEmpty()==false);
 
         }

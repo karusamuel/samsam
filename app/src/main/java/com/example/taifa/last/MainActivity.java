@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         homeDrawer.openDrawer(Gravity.START);
         homeTablayout.setupWithViewPager(homeViewPager);
         navigationView = findViewById(R.id.navigation);
-        course= getPreferences(MODE_PRIVATE).getString("course",null);
+        course= getSharedPreferences("Course",MODE_PRIVATE).getString("course",null);
 
         }
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 protected void onPostExecute(Void aVoid) {
                     super.onPostExecute(aVoid);
-                    populate();
+                    courseCheck();
                     homeViewPager.setVisibility(View.VISIBLE);
 
 
@@ -85,26 +85,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         } else {
+            courseCheck();
 
 
-            if (course != null) {
-                populate();
 
-            } else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Select Course");
-                builder.setMessage("You Need to Select a Course to Continue");
-                builder.setIcon(R.drawable.about);
-                builder.setPositiveButton("Select Course", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(getApplicationContext(), AccountActivity.class));
-                    }
-                });
-
-                builder.create().show();
-
-            }
 
 
         }
@@ -178,8 +162,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         goOn();
-        if(getSharedPreferences("Course",MODE_PRIVATE).contains("course")){
-            Toast.makeText(this,"saaaaaaaaved",Toast.LENGTH_LONG).show();
+    }
+
+    public void courseCheck(){
+        if (course != null) {
+            populate();
+
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Select Course");
+            builder.setMessage("You Need to Select a Course to Continue");
+            builder.setIcon(R.drawable.about);
+            builder.setPositiveButton("Select Course", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    startActivity(new Intent(getApplicationContext(), AccountActivity.class));
+                }
+            });
+
+            builder.create().show();
 
         }
     }
