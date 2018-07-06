@@ -1,3 +1,55 @@
 <resources>
-    <string name="app_name">last</string>
+    <string name="app_name">MyVarsity</string>
+    <string-array name="HeadLines">
+        <item>Pwani Closed</item>
+        <item>Pwani Closed</item>
+        <item>Pwani Closed</item>
+        <item>Pwani Closed</item>
+        <item>Pwani Closed</item>
+        <item>Pwani Closed</item>
+        <item>Pwani Closed</item>
+    </string-array>
+    <string-array name="ShortContent">
+        <item>pwani university closed due to water shortage in kilifi</item>
+        <item>pwani university closed due to water shortage in kilifi</item>
+        <item>pwani university closed due to water shortage in kilifi</item>
+        <item>pwani university closed due to water shortage in kilifi</item>
+        <item>pwani university closed due to water shortage in kilifi</item>
+        <item>pwani university closed due to water shortage in kilifi</item>
+        <item>pwani university closed due to water shortage in kilifi</item>
+    </string-array>
+    <string-array name="Dates">
+        <item>12.06.2015</item>
+        <item>12.06.2015</item>
+        <item>12.06.2015</item>
+        <item>12.06.2015</item>
+        <item>12.06.2015</item>
+        <item>12.06.2015</item>
+        <item>12.06.2015</item>
+    </string-array>
+    <string-array name="url">
+        <item>www.google.com</item>
+        <item>www.google.com</item>
+        <item>www.google.com</item>
+        <item>www.google.com</item>
+        <item>www.google.com</item>
+        <item>www.google.com</item>
+        <item>www.google.com</item>
+    </string-array>
+    <string-array name="Notifications">
+        <item>www.google.com</item>
+        <item>www.google.com</item>
+        <item>www.google.com</item>
+        <item>www.google.com</item>
+    </string-array>
+
+    <string-array name="boardTime">
+        <item>6.10.2018 20:00</item>
+        <item>6.10.2018 20:00</item>
+        <item>6.10.2018 20:00</item>
+        <item>6.10.2018 20:00</item>
+        <item>6.10.2018 20:00</item>
+        <item>6.10.2018 20:00</item>
+    </string-array>
+
 </resources>

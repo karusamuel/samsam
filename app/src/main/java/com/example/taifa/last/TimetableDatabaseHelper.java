@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 public class TimetableDatabaseHelper extends SQLiteOpenHelper {
-    public static String DATABASENAME="timeTableDatabase";
+    public static String DATABASENAME="timeTableDatabaseS";
     public static String TABLENAME="timetableList";
     public static String UNITCODE="unitCode";
     public static String UNITNAME="unitName";
@@ -17,6 +17,7 @@ public class TimetableDatabaseHelper extends SQLiteOpenHelper {
     public static String UNITVENUE="unitVenue";
     public static String UNITTIME="unitTime";
     public static String UNITDAY = "unitday";
+    public static String UNITCOURSE = "unitcourse";
 
 
     public TimetableDatabaseHelper(Context context){
@@ -31,8 +32,9 @@ public class TimetableDatabaseHelper extends SQLiteOpenHelper {
                 + UNITVENUE +" TEXT, "
                 + LECTURENAME +" TEXT, "
                 + UNITTIME +" TEXT, "
-                + UNITDAY +" TEXT " +
-                ")");
+                + UNITDAY +" TEXT, "
+                + UNITCOURSE + " TEXT)"
+                );
 
     }
 
@@ -55,17 +57,18 @@ public class TimetableDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(LECTURENAME,contract.lectureName);
         contentValues.put(UNITVENUE,contract.getUnitVenue());
         contentValues.put(UNITDAY,contract.unitDay);
+        contentValues.put(UNITCOURSE,contract.unitCourse);
 
         myDb.insert(TABLENAME,null,contentValues);
 
 
 
     }
-    public ArrayList<TimetableContract> fetchData(){
+    public ArrayList<TimetableContract> fetchData(String course){
         TimetableContract contract ;
         ArrayList<TimetableContract> list = new ArrayList<>();
         SQLiteDatabase myDb = getReadableDatabase();
-        Cursor cursor = myDb.rawQuery("SELECT* FROM " + TABLENAME,null);
+        Cursor cursor = myDb.rawQuery("SELECT* FROM " + TABLENAME +" WHERE "+UNITCOURSE+" = " + course ,null);
         if(cursor.moveToFirst()){
             do{
                 contract =  new TimetableContract();
@@ -75,6 +78,7 @@ public class TimetableDatabaseHelper extends SQLiteOpenHelper {
                 contract.unitVenue=cursor.getString(cursor.getColumnIndex(UNITVENUE));
                 contract.lectureName=cursor.getString(cursor.getColumnIndex(LECTURENAME));
                 contract.unitDay = cursor.getString(cursor.getColumnIndex(UNITDAY));
+                contract.unitCourse = cursor.getString(cursor.getColumnIndex(UNITCOURSE));
 
                 list.add(contract);
 
@@ -85,5 +89,27 @@ public class TimetableDatabaseHelper extends SQLiteOpenHelper {
 
         return list;
     }
+    public ArrayList<TimetableContract> fetchCourses(){
+        TimetableContract contract ;
+        ArrayList<TimetableContract> list = new ArrayList<>();
+        SQLiteDatabase myDb = getReadableDatabase();
+        Cursor cursor = myDb.rawQuery("SELECT "+UNITCOURSE+" FROM " + TABLENAME,null);
+        if(cursor.moveToFirst()){
+            do{
+                contract =  new TimetableContract();
+                contract.unitCourse=cursor.getString(cursor.getColumnIndex(UNITCOURSE));
+
+
+                list.add(contract);
+
+
+            }while (cursor.moveToNext());
+        }
+
+
+        return list;
+    }
+
+
 
 }

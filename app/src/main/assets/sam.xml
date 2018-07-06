@@ -1,0 +1,12 @@
+<Timetable>
+<unit name="Computer Graphics">
+    <ComputerScience>
+    <code>SCS B56</code>
+    <day>Monday</day>
+    <time>7:00</time>
+    <venue>Pl9</venue>
+    <lecture>Madam limo</lecture>
+    <course>Computer Science</course>
+    </ComputerScience>
+</unit>
+</Timetable>

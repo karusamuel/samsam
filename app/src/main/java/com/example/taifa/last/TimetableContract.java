@@ -7,18 +7,30 @@ public class TimetableContract implements Serializable {
     String unitCode;
     String unitVenue;
     String unitDay;
+    String unitCourse;
 
     public TimetableContract() {
 
     }
 
-    public TimetableContract(String unitName, String unitCode, String unitVenue, String unitTime, String lectureName,String unitDay) {
+    public String getUnitCourse() {
+        return unitCourse;
+    }
+
+    public void setUnitCourse(String unitCourse) {
+        this.unitCourse = unitCourse;
+    }
+
+    public TimetableContract(String unitName, String unitCode, String unitVenue, String unitTime,
+                             String lectureName, String unitDay, String unitCourse) {
         this.unitName = unitName;
         this.unitCode = unitCode;
         this.unitVenue = unitVenue;
         this.unitTime = unitTime;
         this.lectureName = lectureName;
         this.unitDay = unitDay;
+        this.unitCourse = unitCourse;
+
     }
 
     public String getUnitDay() {

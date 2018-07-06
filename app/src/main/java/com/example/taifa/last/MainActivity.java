@@ -1,20 +1,24 @@
 package com.example.taifa.last;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Parcelable;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import java.io.Serializable;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +26,13 @@ public class MainActivity extends AppCompatActivity {
     TabLayout homeTablayout;
     ViewPager homeViewPager;
     NavigationView navigationView;
+    ArrayList<TimetableContract> list;
+    TimetableDatabaseHelper helper;
+    HomeViewPagerAdapter adapter;
+    TimetableFragment timetableFragment;
+    String course;
 
+    @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,35 +44,78 @@ public class MainActivity extends AppCompatActivity {
         homeDrawer.openDrawer(Gravity.START);
         homeTablayout.setupWithViewPager(homeViewPager);
         navigationView = findViewById(R.id.navigation);
-        ArrayList<TimetableContract> list;
+        course= getPreferences(MODE_PRIVATE).getString("course",null);
 
-        TimetableDatabaseHelper myDb = new TimetableDatabaseHelper(this);
-
-        myDb.insertData(new TimetableContract("Computer Graphics","SCS B316", "LTW",
-                "7:00AM","madam Limo","Monday"));
-        myDb.insertData(new TimetableContract("Computer Graphics",
-                "SCS B315", "LTW","7:00AM","madam Limo","Tuesday"));
-        myDb.insertData(new TimetableContract("Computer Graphics",
-                "SCS B314", "LTW","7:00AM","madam Limo","Wednesday"));
-        myDb.insertData(new TimetableContract("Computer Graphics",
-                "SCS B313", "LTW","7:00AM","madam Limo","Thursday"));
-        myDb.insertData(new TimetableContract("Computer Graphics",
-                "SCS B312", "LTW","7:00AM","madam Limo","Friday"));
-        myDb.insertData(new TimetableContract("Computer Graphics",
-                "SCS B311", "LTW","7:00AM","madam Limo","Wednesday"));
+        }
 
 
 
-        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager());
-       TimetableFragment timetableFragment = new TimetableFragment();
-       TimetableDatabaseHelper helper=new TimetableDatabaseHelper(this);
-       list = helper.fetchData();
-       final Bundle bundle = new Bundle();
-       bundle.putSerializable("list",list);
+    public void goOn() {
+        adapter = new HomeViewPagerAdapter(getSupportFragmentManager());
+        timetableFragment = new TimetableFragment();
+        helper = new TimetableDatabaseHelper(this);
+        list = helper.fetchCourses();
+        if (list.isEmpty()) {
+            @SuppressLint("StaticFieldLeak") AsyncTask<InputStream, Void, Void> task = new AsyncTask<InputStream, Void, Void>() {
 
 
-       timetableFragment.setArguments(bundle);
+                @Override
+                protected Void doInBackground(InputStream... stream) {
+                    homeViewPager.setVisibility(View.GONE);
 
+                    new Parser(stream[0], getApplicationContext());
+
+                    return null;
+                }
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    super.onPostExecute(aVoid);
+                    populate();
+                    homeViewPager.setVisibility(View.VISIBLE);
+
+
+                }
+
+            };
+            try {
+                InputStream Stream = getAssets().open("sam.xml");
+                task.execute(Stream);
+            } catch (IOException e) {
+
+            }
+        } else {
+
+
+            if (course != null) {
+                populate();
+
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Select Course");
+                builder.setMessage("You Need to Select a Course to Continue");
+                builder.setIcon(R.drawable.about);
+                builder.setPositiveButton("Select Course", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(getApplicationContext(), AccountActivity.class));
+                    }
+                });
+
+                builder.create().show();
+
+            }
+
+
+        }
+    }
+
+    public void populate(){
+        list = helper.fetchData(course);
+        final Bundle bundle = new Bundle();
+        bundle.putSerializable("list",list);
+
+        timetableFragment.setArguments(bundle);
 
         adapter.addItem(timetableFragment,"Today");
         adapter.addItem(new NewsFragment(),"News");
@@ -70,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addItem(new NoticeBoardFragment(),"Notice Board");
 
         homeViewPager.setAdapter(adapter);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -82,17 +136,51 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),AccountActivity.class));
                         return true;
                     case R.id.settings:
-                            startActivity(new Intent(getApplicationContext(),Settings.class));
-                            return true;
+                        startActivity(new Intent(getApplicationContext(),Settings.class));
+                        return true;
+                    case R.id.examTimetable:
+                        notAvailable();
+
+                        return true;
 
                     default:
-                    return false;
+                        return false;
 
 
                 }
             }
         });
+        homeTablayout.getTabAt(0).setIcon(R.drawable.calender);
+        homeTablayout.getTabAt(1).setIcon(R.drawable.news2);
+        homeTablayout.getTabAt(2).setIcon(R.drawable.notifcations2);
+        homeTablayout.getTabAt(3).setIcon(R.drawable.board);
 
 
+
+
+
+    }
+    public void notAvailable(){
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.about);
+        builder.setTitle("Not Available");
+        builder.setMessage("Exam Timetable is Only Available During Exam Period");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+         builder.create().show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        goOn();
+        if(getSharedPreferences("Course",MODE_PRIVATE).contains("course")){
+            Toast.makeText(this,"saaaaaaaaved",Toast.LENGTH_LONG).show();
+
+        }
     }
 }

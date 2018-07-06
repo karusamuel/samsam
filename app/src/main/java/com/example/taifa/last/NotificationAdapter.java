@@ -13,12 +13,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     int[] notificationImages = new int[]{};
 
-    String[] notificationText = new String[]{};
+    String[] notificationText ;
 
     public NotificationAdapter(Context context){
 
 
         this.context=context;
+        notificationText = context.getResources().getStringArray(R.array.Notifications);
     }
 
     public  MyHolder onCreateViewHolder(ViewGroup parent,int type){
@@ -34,7 +35,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     public int getItemCount(){
 
-        return 20;
+      return   notificationText.length;
     }
 
 
@@ -47,6 +48,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             super(view);
 
             notificationImageview = view.findViewById(R.id.notificationImage);
+            notificationImageview.setImageResource(R.drawable.notifications);
             notificationTextView = view.findViewById(R.id.notificationTextview);
 
 

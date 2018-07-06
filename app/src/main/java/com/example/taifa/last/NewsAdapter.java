@@ -1,6 +1,8 @@
 package com.example.taifa.last;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +12,18 @@ import android.widget.TextView;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
     Context context;
-    int[] images = new int[]{};
-    String[] headlines = new String[]{};
-    String[] shortStory = new String[] {};
-    String[] time = new String[]{};
+    int[] images;
+    String[] headlines ;
+    String[] shortStory;
+    String[] time;
+    String[] url;
 
     public NewsAdapter(Context context){
-
-
         this.context=context;
+        headlines = context.getResources().getStringArray(R.array.HeadLines);
+        shortStory = context.getResources().getStringArray(R.array.ShortContent);
+        time = context.getResources().getStringArray(R.array.Dates);
+        url = context.getResources().getStringArray(R.array.url);
     }
 
     public  MyHolder onCreateViewHolder(ViewGroup parent,int type){
@@ -27,14 +32,30 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
      return  new MyHolder(inflater.inflate(R.layout.newsstrip,parent,false));
     }
 
-    public void onBindViewHolder(MyHolder holder,int position){
+    public void onBindViewHolder(MyHolder holder, final int position){
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,WebViewActivity.class);
+                intent.putExtra("url",url[position]);
+                context.startActivity(intent);
+            }
+        });
+        holder.headline.setText(headlines[position]);
+        holder.story.setText(shortStory[position]);
+        holder.date.setText(time[position]);
+
 
 
     }
 
+
+
+
     public int getItemCount(){
 
-        return 20;
+        return headlines.length;
     }
 
 
@@ -44,6 +65,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
         TextView story;
         TextView date;
         ImageView newHealdlineImage;
+        CardView cardView;
 
         public MyHolder(View view){
             super(view);
@@ -51,10 +73,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
             story =view.findViewById(R.id.shortNewsTextView);
             date = view.findViewById(R.id.newsTimeTextView);
             newHealdlineImage = view.findViewById(R.id.newsimageView);
+            cardView = view.findViewById(R.id.newsView);
 
-
-
-        }
 
     }
+}
+
+
 }

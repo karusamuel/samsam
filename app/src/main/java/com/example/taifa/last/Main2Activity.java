@@ -1,8 +1,10 @@
 package com.example.taifa.last;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Switch;
@@ -14,6 +16,7 @@ public class Main2Activity extends AppCompatActivity {
     ViewPager timeTablePager;
     TabLayout tabLayout;
     ArrayList<TimetableContract> list;
+    TimetablePagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +27,35 @@ public class Main2Activity extends AppCompatActivity {
 
 
         tabLayout.setupWithViewPager(timeTablePager);
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        TimetablePagerAdapter adapter = new TimetablePagerAdapter(getSupportFragmentManager());
+
+
+        adapter= new TimetablePagerAdapter(getSupportFragmentManager());
+
 
         TimetableDatabaseHelper myDb = new TimetableDatabaseHelper(this);
-        list = myDb.fetchData();
+        String course = getSharedPreferences("Course", MODE_PRIVATE).getString("course", null);
+        list = myDb.fetchData(course);
+        if (course != null) {
+            populate();
 
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Select Course");
+            builder.setMessage("You Need to Select a Course to Continue");
+            builder.setIcon(R.drawable.about);
+            builder.setPositiveButton("Select Course", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    startActivity(new Intent(getApplicationContext(), AccountActivity.class));
+                }
+            });
+
+            builder.create().show();
+
+
+        }
+    }
+    public void populate(){
         Bundle mondayBundle = new Bundle();
         Bundle tuesdayBundle = new Bundle();
         Bundle wednesdayBundle = new Bundle();
@@ -102,16 +128,20 @@ public class Main2Activity extends AppCompatActivity {
         adapter.addItem(friday,"Friday");
 
         timeTablePager.setAdapter(adapter);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.getTabAt(0).setIcon(R.drawable.monday);
+        tabLayout.getTabAt(1).setIcon(R.drawable.tuesday);
+        tabLayout.getTabAt(2).setIcon(R.drawable.wenesday);
+        tabLayout.getTabAt(3).setIcon(R.drawable.tuesday);
+        tabLayout.getTabAt(4).setIcon(R.drawable.friday);
 
 
-    }
-
-
-
-
-
-    public  void onStart(){
-        super.onStart();
 
     }
+
+
+
+
+
+
 }

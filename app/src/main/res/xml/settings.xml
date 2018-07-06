@@ -6,23 +6,27 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="switch_preference_1"
-            android:title="Switch preference" />
+            android:title="Auto Update" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="check_box_preference_1"
-            android:title="Check box preference" />
+            android:title="Update only on wifi" />
     </PreferenceCategory>
     <PreferenceCategory android:title="Sound">
 
     </PreferenceCategory>
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="switch_preference_1"
+        android:title="Sound" />
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="check_box_preference_1"
-        android:title="Check box preference" />
+        android:title="Notifications" />
     <RingtonePreference
         android:defaultValue=""
         android:key="ringtone_preference_1"
-        android:title="Ringtone preference" />
+        android:title="Notification sound" />
     <PreferenceCategory android:title="about">
         <Preference android:title="About">
 

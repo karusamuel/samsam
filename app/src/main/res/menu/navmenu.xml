@@ -4,13 +4,25 @@
 
     <item android:title="TimeTable"
         android:id="@+id/timetable"
+        android:icon="@drawable/calender"
+
         />
-    <item android:title="Exam Timetable" />
+    <item android:title="Exam Timetable"
+        android:id="@+id/examTimetable"
+        android:icon="@drawable/calender2"
+
+        />
+
     <item android:title="Account"
         android:id="@+id/account"
+        android:icon="@drawable/account"
         />
     <item android:title="Settings"
         android:id="@+id/settings"
+        android:icon="@drawable/settings"
         />
-    <item android:title="About" />
+    <item android:title="About"
+        android:id="@+id/about"
+        android:icon="@drawable/about"
+        />
 </menu>
