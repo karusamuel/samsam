@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class NoticeBoardAdapter extends RecyclerView.Adapter<NoticeBoardAdapter.MyHolder> {
     Context context;
-    int[] board = new int[]{R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2,R.drawable.notifcations2};
+    int[] board = new int[]{R.drawable.boardone,R.drawable.board2,R.drawable.boardtree,R.drawable.boardfour,R.drawable.boardfive,R.drawable.boardsix,R.drawable.boardsven};
     String[] boardTime;
 
     public NoticeBoardAdapter(Context context){
@@ -30,7 +30,7 @@ public class NoticeBoardAdapter extends RecyclerView.Adapter<NoticeBoardAdapter.
 
     public void onBindViewHolder(MyHolder holder, final int position){
         holder.noticeBoardImageView.setImageResource(board[position]);
-        holder.noticeTime.setText(board[position]);
+        holder.noticeTime.setText(boardTime[position]);
         holder.noticeBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

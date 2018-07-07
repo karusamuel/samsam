@@ -102,7 +102,7 @@ public class Parser {
                 break;
             case "day":
                 parser.next();
-                one.unitDay=parser.getText();
+                one.unitDay=parser.getText().trim();
 
                 break;
         }

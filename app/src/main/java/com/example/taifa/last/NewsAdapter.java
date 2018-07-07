@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
     Context context;
-    int[] images;
+    int[] images = new  int[]{R.drawable.newsone,R.drawable.newstwo,R.drawable.newsthree,R.drawable.newfour,R.drawable.newfive};
     String[] headlines ;
     String[] shortStory;
     String[] time;
@@ -33,6 +33,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
     }
 
     public void onBindViewHolder(MyHolder holder, final int position){
+        holder.newHealdlineImage.setImageResource(images[position]);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

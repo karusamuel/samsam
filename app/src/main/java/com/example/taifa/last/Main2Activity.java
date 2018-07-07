@@ -120,12 +120,38 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
+        if(mondayList.isEmpty()){
+            adapter.addItem(new NoLessonFragment(), "Monday");
 
-        adapter.addItem(monday,"Monday");
-        adapter.addItem(tuesday,"Tuesday");
-        adapter.addItem(wednesday,"Wednesday");
-        adapter.addItem(thursday,"Thursday");
+        }else {
+            adapter.addItem(monday, "Monday");
+        }
+        if(tuesdayList.isEmpty()){
+            adapter.addItem(new NoLessonFragment(), "Tuesday");
+
+        }
+        else {
+            adapter.addItem(tuesday, "Tuesday");
+        }
+        if(wednesdayList.isEmpty()){
+            adapter.addItem(new NoLessonFragment(), "Wednesday");
+
+        }else {
+            adapter.addItem(wednesday, "Wednesday");
+        }
+        if(thursdayList.isEmpty()){
+            adapter.addItem(new NoLessonFragment(), "Thursday");
+
+        }
+        else {
+        adapter.addItem(thursday,"Thursday");}
+        if(fridayList.isEmpty()){
+            adapter.addItem(new NoLessonFragment(), "Friday");
+
+        }
+        else {
         adapter.addItem(friday,"Friday");
+        }
 
         timeTablePager.setAdapter(adapter);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);

@@ -1,0 +1,291 @@
+<Timetable>
+	<ComputerScience>
+			<unit name="Computer Graphics">
+				<code> SCS B301 </code>
+				<venue> PL6 </venue>
+				<day>  Monday </day>
+				<time> 8:00-10:00 </time>
+				<lecture> Dr. Mariga </lecture>
+				<course>BSC Computer Science</course>
+			</unit>	
+			<unit name="Human Computer Interface">
+				<code> SCS venueB302 </code>
+				<venue> Pf6 </venue>
+				<day> Monday </day>
+				<time> 14:00-16:00 </time>
+				<lecture> Mr. Z.Mwangi </lecture>
+				<course>BSC Computer Science</course>
+			</unit>
+			<unit name="Compiler Construction">
+				<code> SCS B303</code>
+				<venue> LIB 1 </venue>
+				<day>Tuesday</day>
+				<time> 10:00-13:00</time>
+				<lecture> Mr. Arnold Peter</lecture>
+				<course>BSC Computer Science</course>
+			</unit>
+			<unit name="E-commerce">
+				<code> SCS B304 </code>
+				<venue> Pf7</venue>
+				<day>Tuesday</day>
+				<time> 14:00-16:00</time>
+				<lecture> Mrs. Heroe </lecture>
+				<course>BSC Computer Science</course>
+			</unit>
+			<unit name="E-learning">
+				<code> SCS B306 </code>
+				<venue> Pf6 </venue>
+				<day> Wednesday </day>
+				<time> 8:00-10:00</time>
+				<lecture> Mr. Mwangi</lecture>
+				<course>BSC Computer Science</course>
+			</unit>
+			<unit name="Artificial Intelligence">
+				<code> SCS B307 </code>
+				<venue> Pf4 </venue>
+				<day> Friday</day>
+				<time>14:00-16:00 </time>
+				<lecture> Mr. Mwangi </lecture>
+				<course>BSC Computer Science</course>
+			</unit>
+	</ComputerScience>
+	<BEDMathematicsandComputer>
+			<unit name="Graphics">
+				<code> SCS B308 </code>
+				<venue> PL6 </venue>
+				<day>  Monday </day>
+				<time> 8:00-10:00 </time>
+				<lecture> Dr. Mariga </lecture>
+				<course>BED Computer Maths</course>
+			</unit>	
+			<unit name="Human Computer Interface">
+				<code> SCS B309 </code>
+				<venue> Pf6 </venue>
+				<day> Monday </day>
+				<time> 14:00-16:00 </time>
+				<lecture> Mr. Z.Mwangi </lecture>
+				<course>BED Computer Maths</course>
+			</unit>
+			<unit name="calculus 3">
+				<code> SMA B310</code>
+				<venue> LIB 6 </venue>
+				<day>Tuesday</day>
+				<time> 14:00-16:00</time>
+				<lecture> Mr. Victor Kiptoo </lecture>
+				<course>BED Computer Maths</course>
+			</unit>
+
+			<unit name="E-commerce">
+				<code> SCS B311 </code>
+				<venue> Pf7</venue>
+				<day>Tuesday</day>
+				<time> 14:00-16:00</time>
+				<lecture> Mrs.Vector Analysis"</lecture>
+				<course>BED Computer Maths</course>
+			</unit>	
+
+			<unit name = "vector analysis">
+				<code> SMA B312 </code>
+				<venue> EL </venue>
+				<day> Wednesday </day>
+				<time> 10:00-12:00</time>
+				<lecture> Mr. Ngugi Mark</lecture>
+				<course>BED Computer Maths</course>
+			</unit>
+
+			<unit name="Linear Algebra">
+				<code> SMA B313 </code>
+				<venue> Pl1 </venue>
+				<day> Wednesday</day>
+				<time>14:00-16:00 </time>
+				<lecture> Mr. Mwangi </lecture>
+				<course>BED Computer Maths</course>
+			</unit>
+	</BEDMathematicsandComputer>
+<IndustrialChemistry>
+			<unit name="Organic Synthesis">
+				<code> SCH B314 </code>
+				<venue> EL</venue>
+				<day>Monday</day>
+				<time> 8:00-10:00</time>
+				<lecture> Prof. Guyo</lecture>
+				<course>Industrial Chemistry</course>
+			</unit>	
+			<unit name="Chemical Thermal Dynamic">
+				<code> SCH B315 </code>
+				<venue> Pf6 </venue>
+				<day> Monday </day>
+				<time> 10:00-13:00</time>
+				<lecture> Dr. Wekesa </lecture>
+				<course>Industrial Chemistry</course>
+
+			</unit>
+			<unit name="Chemical Kinetics">
+				<code> SCH B316 </code>
+				<venue> LIB 1 </venue>
+				<day> Tuesday </day>
+				<time> 10:00-13:00 </time>
+				<lecture> Dr. Najia</lecture>
+				<course>Industrial Chemistry</course>
+			</unit>
+			<unit name="Unit OPeration 2">
+				<code> SCS B317</code>
+				<venue> Pf7</venue>
+				<day> Tuesday </day>
+				<time> 16:00-18:00 </time>
+				<lecture> Dr. Mtunga </lecture>
+				<course>Industrial Chemistry</course>
+			</unit>
+			<unit name="Material Balance">
+				<code> SCS B318 </code>
+				<venue> Pf6 </venue>
+				<day> Wednesday </day>
+				<time> 10:00-13:00 </time>
+				<lecture> Prof. Guyo </lecture>
+				<course>Industrial Chemistry</course>
+			</unit>
+			<unit name="Research Methods">
+				<code> SCH B319 </code>
+				<venue> Pf4 </venue>
+				<day>Friday </day>
+				<time> 10:00-13:00</time>
+				<lecture> Dr. Loise </lecture>
+				<course>Industrial Chemistry</course>
+			</unit>
+</IndustrialChemistry>
+	<Philosophy>
+			<unit name="Political Philosophy">
+				<code> APH B320 </code>
+				<venue> LIB1 </venue>
+				<day>Tuesday</day>
+				<time> 14:00-16:00</time>
+				<lecture> Dr Oyooyaee </lecture>
+				<course>Philosophy</course>
+			</unit>	
+			<unit name="Epistemology">
+				<code> APH B321</code>
+				<venue> Pf6 </venue>
+				<day>Tuesday</day>
+				<time> 16:00-18:00</time>
+				<lecture> Dr. owino</lecture>
+				<course>Philosophy</course>
+			</unit>
+			<unit name="Metaphysics">
+				<code> APH B322</code>
+				<venue> PF 4 </venue>
+				<day>Wednesday</day>
+				<time>8:00-10:00 </time>
+				<lecture> Dr. Owino </lecture>
+				<course>Philosophy</course>
+			</unit>
+			<unit name="Environmental Ethics">
+				<code> APH B323 </code>
+				<venue> PL 2 </venue>
+				<day>Thursday</day>
+				<time> 10:00-12:00</time>
+				<lecture> Dr. Wokabi </lecture>
+				<course>Philosophy</course>
+			</unit>
+			<unit name="Philosophy of Religion">
+				<code> APH B324</code>
+				<venue> H2B1</venue>
+				<day>Thursday</day>
+				<time> 16:00-18:00 </time>
+				<lecture> Prof. Muoki </lecture>
+				<course>Philosophy</course>
+			</unit>
+	</Philosophy>
+	<PoliticalScience>
+			<unit name="Internal Relations">
+				<code> APL B325 </code>
+				<venue> LF </venue>
+				<day>Monday</day>
+				<time>8:00-10:00 </time>
+				<lecture> Mr. Some</lecture>
+				<course>Political Science</course>
+			</unit>	
+			<unit name="Research Methods">
+				<code> APL B326</code>
+				<venue > LIB 6 </venue>
+				<day>Tuesday</day>
+				<time>10:00-12:00 </time>
+				<lecture> Mrs. Hawaa </lecture>
+				<course>Political Science</course>
+			</unit>
+			<unit name="Third World Politics">
+				<code> APL B327</code>
+				<venue> LIB 1 </venue>
+				<day>Thursday</day>
+				<time> 10:00-12:00</time>
+				<lecture> Dr. Najia </lecture>
+				<course>Political Science</course>
+			</unit>
+			<unit name="International Law">
+				<code > APL B328 </code>
+				<venue> LIB 4</venue>
+				<day>Friday</day>
+				<time> 10:00-13:00 </time>
+				<lecture> Prof. Guyo </lecture>
+				<course>Political Science</course>
+			</unit>
+			<unit name= "Kenya Constitution">
+				<code> APL B329 </code>
+				<venue> PF 12</venue>
+				<day>Friday</day>
+				<time> 16:00-18:00 </time>
+				<lecture> Dr. Chuck </lecture>
+				<course>Political Science</course>
+			</unit>
+	</PoliticalScience>
+	<Animal_Health_and_MAnagement>
+			<unit name="Anatomy of farm animals">
+				<code> KAH D330 </code>
+				<venue> PL7 </venue>
+				<day>  Tuesday </day>
+				<time> 8:00-10:00 </time>
+				<lecture> Dr. Grace Mariga </lecture>
+				<course>Political Science</course>
+			</unit>	
+			<unit name="Animal Physiology">
+				<code> KAH B331 </code>
+				<venue> Pl2 </venue>
+				<day> Wednesday </day>
+				<time> 10:00-12:00 </time>
+				<lecture> Dr. Maritim </lecture>
+				<course>Political Science</course>
+			</unit>
+			<unit name="Microbiology">
+				<code> KAH B321</code>
+				<venue> A1 </venue>
+				<day>Wednesday</day>
+				<time> 14:00-16:00</time>
+				<lecture> Mr. Elvis Kiptoo </lecture>
+				<course>Political Science</course>
+			</unit>
+			<unit name="parasitology">
+				<code> KAH B322 </code>
+				<venue> A2 </venue>
+				<day>Tuesday</day>
+				<time> 14:00-16:00</time>
+				<lecture> Mrs.Vector Analysis"</lecture>
+				<course>Political Science</course>
+			</unit>	
+			<unit name = "General pathology">
+				<code> KAH B323 </code>
+				<venue> A1 </venue>
+				<day> Thursday </day>
+				<time> 10:00-12:00</time>
+				<lecture> Mr. Ngugi Mark</lecture>
+				<course>Political Science</course>
+			</unit>
+			<unit name="Biostatistics">
+				<code> SMA B324 </code>
+				<venue> A1 </venue>
+				<day>Friday </day>
+				<time>14:00-16:00 </time>
+				<lecture> Mr. Kipgoei Dominic </lecture>
+				<course>Political Science</course>
+			</unit>
+	</Animal_Health_and_MAnagement>
+		
+</Timetable>

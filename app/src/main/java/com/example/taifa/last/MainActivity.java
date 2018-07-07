@@ -9,17 +9,24 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout homeDrawer;
@@ -31,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
     HomeViewPagerAdapter adapter;
     TimetableFragment timetableFragment;
     String course;
+    ArrayList<TimetableContract> newList;
+    Calendar c;
+    int dayOfWeek;
+    Toolbar toolbar;
+
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -45,8 +57,21 @@ public class MainActivity extends AppCompatActivity {
         homeTablayout.setupWithViewPager(homeViewPager);
         navigationView = findViewById(R.id.navigation);
         course= getSharedPreferences("Course",MODE_PRIVATE).getString("course",null);
+        c = Calendar.getInstance();
+        dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+        newList = new ArrayList<>();
+        list = new ArrayList<>();
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.meniicon);
+
+
 
         }
+
 
 
 
@@ -55,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         timetableFragment = new TimetableFragment();
         helper = new TimetableDatabaseHelper(this);
         list = helper.fetchCourses();
+
         if (list.isEmpty()) {
             @SuppressLint("StaticFieldLeak") AsyncTask<InputStream, Void, Void> task = new AsyncTask<InputStream, Void, Void>() {
 
@@ -79,9 +105,10 @@ public class MainActivity extends AppCompatActivity {
 
             };
             try {
-                InputStream Stream = getAssets().open("sam.xml");
+                InputStream Stream = getAssets().open("timetable.xml");
                 task.execute(Stream);
             } catch (IOException e) {
+                Log.e("My Tag",e.getMessage());
 
             }
         } else {
@@ -96,12 +123,31 @@ public class MainActivity extends AppCompatActivity {
 
     public void populate(){
         list = helper.fetchData(course);
+       int i=0;
+        while (i<list.size()){
+            Log.e("ghfilkhlirhbg","vjhsevjfvjsebgvfjsvf");
+            String weekday = new DateFormatSymbols().getWeekdays()[dayOfWeek];
+            Log.e("ghfilkhlirhbg",weekday);
+            if(list.get(i).getUnitDay().equals(weekday)){
+                Log.e("Entered", "populate: ");
+
+                newList.add(list.get(i));
+            }
+
+            i++;
+
+
+        }
         final Bundle bundle = new Bundle();
-        bundle.putSerializable("list",list);
+        bundle.putSerializable("list",newList);
 
         timetableFragment.setArguments(bundle);
+        if(newList.isEmpty()){
+            adapter.addItem(new NoLessonFragment(), "Today");
 
-        adapter.addItem(timetableFragment,"Today");
+        }else {
+            adapter.addItem(timetableFragment, "Today");
+        }
         adapter.addItem(new NewsFragment(),"News");
         adapter.addItem(new NotificationFragment(),"Notification");
         adapter.addItem(new NoticeBoardFragment(),"Notice Board");
@@ -161,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        list.clear();
         goOn();
     }
 
@@ -169,19 +216,51 @@ public class MainActivity extends AppCompatActivity {
             populate();
 
         } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Select Course");
-            builder.setMessage("You Need to Select a Course to Continue");
-            builder.setIcon(R.drawable.about);
-            builder.setPositiveButton("Select Course", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    startActivity(new Intent(getApplicationContext(), AccountActivity.class));
-                }
-            });
+            selectCourse();
 
-            builder.create().show();
 
+        }
+    }
+    public void selectCourse(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Course");
+        builder.setMessage("You Need to Select a Course to Continue");
+        builder.setIcon(R.drawable.about);
+        builder.setPositiveButton("Select Course", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(getApplicationContext(), AccountActivity.class));
+            }
+        });
+
+        builder.create().show();
+    }
+    public void onBackPressed(){
+        if(homeDrawer.isDrawerOpen(Gravity.START)){
+            homeDrawer.closeDrawer(Gravity.START);
+
+        }else{
+            super.onBackPressed();
+        }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.home:
+                homeDrawer.openDrawer(Gravity.START);
+                return true;
+            case R.id.menuSetting:
+                startActivity(new Intent(this,Settings.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

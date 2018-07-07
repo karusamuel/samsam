@@ -1,40 +1,44 @@
 <resources>
     <string name="app_name">MyVarsity</string>
     <string-array name="HeadLines">
-        <item>Pwani Closed</item>
-        <item>Pwani Closed</item>
-        <item>Pwani Closed</item>
-        <item>Pwani Closed</item>
-        <item>Pwani Closed</item>
-        <item>Pwani Closed</item>
-        <item>Pwani Closed</item>
+        <item>Student Unrest</item>
+        <item>Lectures Strike</item>
+        <item>HELB Waiver extended</item>
+        <item>University Education is a mess </item>
+        <item>Pwani Closed due to Water Shortage</item>
+
     </string-array>
     <string-array name="ShortContent">
-        <item>pwani university closed due to water shortage in kilifi</item>
-        <item>pwani university closed due to water shortage in kilifi</item>
-        <item>pwani university closed due to water shortage in kilifi</item>
-        <item>pwani university closed due to water shortage in kilifi</item>
-        <item>pwani university closed due to water shortage in kilifi</item>
-        <item>pwani university closed due to water shortage in kilifi</item>
-        <item>pwani university closed due to water shortage in kilifi</item>
+        <item>Students at Pwani University Sunday clashed with boda boda
+            operators, touts and villagers at Kibaoni in Kilifi after they blocked the Kilifi-Malindi highway protesting the death
+            of their colleague who drowned in the Indian Ocean on Saturday during a swimming expedition.</item>
+        <item>Lecturers will kick off their strike at midnight
+            as the government has not tabled an offer to counter their 2017-21 Collective Bargaining Agreement.</item>
+        <item>Ms Mohamed said the decision to extended the waiver was reached after it emerged that more past beneficiaries were willing to repay
+            their loans in order to support other students
+            in need in higher learning institutions.</item>
+        <item>University education is in a mess and must be fixed to restore normal
+            learning and improve quality, Education Cabinet Secretary Amina Mohammed has said.</item>
+        <item>Pwani University in Kilifi County has been closed after students threatened
+            to protest over the lack of water in the institution for a week.</item>
+
     </string-array>
     <string-array name="Dates">
-        <item>12.06.2015</item>
-        <item>12.06.2015</item>
-        <item>12.06.2015</item>
-        <item>12.06.2015</item>
-        <item>12.06.2015</item>
-        <item>12.06.2015</item>
-        <item>12.06.2015</item>
+        <item>06.07.2018</item>
+        <item>06.07.2018</item>
+        <item>06.07.2018</item>
+        <item>06.07.2018</item>
+        <item>06.07.2018</item>
+        <item>06.07.2018</item>
+        <item>06.07.2018</item>
     </string-array>
     <string-array name="url">
-        <item>https://www.google.com</item>
-        <item>https://www.google.com</item>
-        <item>https://www.google.com</item>
-        <item>https://www.google.com</item>
-        <item>https://www.google.com</item>
-        <item>https://www.google.com</item>
-        <item>https://www.google.com</item>
+        <item>https://www.standardmedia.co.ke/article/2000149215/pwani-university-students-clash-with-villagers-in-protest-of-colleague-s-death</item>
+        <item>https://www.the-star.co.ke/news/2018/02/28/lecturers-strike-over-2017-21-cba-begins-midnight-says-uasu_c1722514</item>
+        <item>https://www.nation.co.ke/news/education/Waiver-on-penalties-for-Helb-defaulters-extended/2643604-4645276-hmu6q/index.html</item>
+        <item>https://www.standardmedia.co.ke/article/2001278360/universities-are-in-a-mess-says-education-cs-amina</item>
+        <item>https://citizentv.co.ke/news/pwani-university-closed-due-to-lack-of-water-103741/</item>
+
     </string-array>
     <string-array name="Notifications">
         <item>Exams moved to  16th</item>
@@ -52,5 +56,8 @@
         <item>6.10.2018 20:00</item>
         <item>6.10.2018 20:00</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -30,6 +30,8 @@
                 android:layout_marginLeft="19dp"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="13dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
                 android:text="TextView" />
 
             <TextView
@@ -38,6 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/newsHeadlineTextview"
                 android:layout_alignParentTop="true"
+                android:maxLines="2"
+                android:textSize="14sp"
                 android:layout_alignStart="@+id/newsHeadlineTextview"
                 android:layout_marginTop="40dp"
                 android:text="TextView" />
@@ -49,7 +53,10 @@
                 android:layout_alignLeft="@+id/newsHeadlineTextview"
                 android:layout_alignParentBottom="true"
                 android:layout_alignStart="@+id/newsHeadlineTextview"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="10sp"
+                android:textColor="@color/colorAccent"
+                />
         </RelativeLayout>
 
         <RelativeLayout
