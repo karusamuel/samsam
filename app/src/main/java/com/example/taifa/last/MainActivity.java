@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.meniicon);
+        actionBar.setHomeAsUpIndicator(R.drawable.last);
 
 
 
@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         list = helper.fetchCourses();
 
         if (list.isEmpty()) {
+            Toast.makeText(this,"Loading please Wait",Toast.LENGTH_LONG).show();
             @SuppressLint("StaticFieldLeak") AsyncTask<InputStream, Void, Void> task = new AsyncTask<InputStream, Void, Void>() {
 
 
@@ -172,6 +173,9 @@ public class MainActivity extends AppCompatActivity {
                         notAvailable();
 
                         return true;
+                    case R.id.about:
+                        startActivity(new Intent(getApplicationContext(),About.class));
+                        return true;
 
                     default:
                         return false;
@@ -223,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void selectCourse(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
         builder.setTitle("Select Course");
         builder.setMessage("You Need to Select a Course to Continue");
         builder.setIcon(R.drawable.about);
@@ -253,8 +258,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.home:
-                homeDrawer.openDrawer(Gravity.START);
+            case android.R.id.home:
+                if(!homeDrawer.isDrawerOpen(Gravity.START)){
+                homeDrawer.openDrawer(Gravity.START,true);
+                }else{
+                    homeDrawer.closeDrawer(Gravity.START,true);
+                }
                 return true;
             case R.id.menuSetting:
                 startActivity(new Intent(this,Settings.class));

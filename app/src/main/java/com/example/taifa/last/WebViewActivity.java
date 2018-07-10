@@ -22,7 +22,7 @@ public class WebViewActivity extends AppCompatActivity {
         url = getIntent().getStringExtra("url");
         storyView = findViewById(R.id.storyView);
         storyView.loadUrl(url);
-        Toast.makeText(this,url,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Loading please Wait",Toast.LENGTH_LONG).show();
         ConnectivityManager manager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
         info = manager.getActiveNetworkInfo();
         checkConnection();
