@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 public class NoticeBoardAdapter extends RecyclerView.Adapter<NoticeBoardAdapter.MyHolder> {
     Context context;
     int[] board = new int[]{R.drawable.boardone,R.drawable.board2,R.drawable.boardtree,R.drawable.boardfour,R.drawable.boardfive,R.drawable.boardsix,R.drawable.boardsven};
@@ -29,7 +31,7 @@ public class NoticeBoardAdapter extends RecyclerView.Adapter<NoticeBoardAdapter.
     }
 
     public void onBindViewHolder(MyHolder holder, final int position){
-        holder.noticeBoardImageView.setImageResource(board[position]);
+        Glide.with(context).load(board[position]).into(holder.noticeBoardImageView);
         holder.noticeTime.setText(boardTime[position]);
         holder.noticeBoard.setOnClickListener(new View.OnClickListener() {
             @Override

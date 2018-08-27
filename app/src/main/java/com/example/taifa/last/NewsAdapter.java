@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
     Context context;
     int[] images = new  int[]{R.drawable.newsone,R.drawable.newstwo,R.drawable.newsthree,R.drawable.newfour,R.drawable.newfive};
@@ -33,7 +35,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
     }
 
     public void onBindViewHolder(MyHolder holder, final int position){
-        holder.newHealdlineImage.setImageResource(images[position]);
+        Glide.with(context).load(images[position]).into(holder.newHealdlineImage);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
