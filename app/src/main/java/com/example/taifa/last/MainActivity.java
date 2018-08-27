@@ -1,8 +1,10 @@
 package com.example.taifa.last;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -22,6 +24,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormatSymbols;
@@ -29,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+    SharedPreferences myPref;
     DrawerLayout homeDrawer;
     TabLayout homeTablayout;
     ViewPager homeViewPager;
@@ -42,12 +52,23 @@ public class MainActivity extends AppCompatActivity {
     Calendar c;
     int dayOfWeek;
     Toolbar toolbar;
+    FirebaseAnalytics firebaseAnalytics;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference myRef;
 
 
     @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        myPref = getPreferences(MODE_PRIVATE);
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        myRef =firebaseDatabase.getReference("Timetables");
+
 
         setContentView(R.layout.activity_main);
         homeDrawer = findViewById(R.id.homeDrawer);
@@ -83,36 +104,39 @@ public class MainActivity extends AppCompatActivity {
         list = helper.fetchCourses();
 
         if (list.isEmpty()) {
-            Toast.makeText(this,"Loading please Wait",Toast.LENGTH_LONG).show();
-            @SuppressLint("StaticFieldLeak") AsyncTask<InputStream, Void, Void> task = new AsyncTask<InputStream, Void, Void>() {
 
 
-                @Override
-                protected Void doInBackground(InputStream... stream) {
-                    homeViewPager.setVisibility(View.GONE);
+//            Toast.makeText(this,"Loading please Wait",Toast.LENGTH_LONG).show();
+//            @SuppressLint("StaticFieldLeak") AsyncTask<InputStream, Void, Void> task = new AsyncTask<InputStream, Void, Void>() {
+//
+//
+//                @Override
+//                protected Void doInBackground(InputStream... stream) {
+//                    homeViewPager.setVisibility(View.GONE);
+//
+//                    new Parser(stream[0], getApplicationContext());
+//
+//                    return null;
+//                }
+//
+//                @Override
+//                protected void onPostExecute(Void aVoid) {
+//                    super.onPostExecute(aVoid);
+//                    courseCheck();
+//                    homeViewPager.setVisibility(View.VISIBLE);
+//
+//
+//                }
+//
+//            };
 
-                    new Parser(stream[0], getApplicationContext());
-
-                    return null;
-                }
-
-                @Override
-                protected void onPostExecute(Void aVoid) {
-                    super.onPostExecute(aVoid);
-                    courseCheck();
-                    homeViewPager.setVisibility(View.VISIBLE);
-
-
-                }
-
-            };
-            try {
-                InputStream Stream = getAssets().open("timetable.xml");
-                task.execute(Stream);
-            } catch (IOException e) {
-                Log.e("My Tag",e.getMessage());
-
-            }
+//            try {
+//                InputStream Stream = getAssets().open("timetable.xml");
+//                task.execute(Stream);
+//            } catch (IOException e) {
+//                Log.e("My Tag",e.getMessage());
+//
+//            }
         } else {
             courseCheck();
 
@@ -213,7 +237,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         list.clear();
-        goOn();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.hasChildren()){
+                    TimetableVersionCheck versionCheck = null;
+                    for (DataSnapshot data:dataSnapshot.getChildren()) {
+                        data.getValue();
+                         versionCheck = data.getValue(TimetableVersionCheck.class);
+
+                    }
+                    if(versionCheck != null){
+                        if(versionCheck.version > myPref.getInt("version",0)){
+
+                              noTimetable(versionCheck);
+
+                        }else{
+                            goOn();
+                        }
+
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void courseCheck(){
@@ -272,5 +325,39 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+
+    }
+
+
+    public void noTimetable (final TimetableVersionCheck  check){
+
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.about);
+        builder.setTitle("New Version");
+        builder.setMessage("An update of The TimeTable is Available");
+        builder.setPositiveButton("update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(getApplicationContext(),DownloadActivity.class);
+                intent.putExtra("link",check.link);
+                intent.putExtra("version",check.version);
+
+                startActivity(intent);
+
+            }
+        });
+        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+       AlertDialog alertDialog = builder.create();
+       alertDialog.setCancelable(false);
+       alertDialog.show();
+
+
     }
 }
