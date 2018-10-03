@@ -4,7 +4,11 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 public class AddTimeTableActivity extends AppCompatActivity {
     String day = null;
@@ -15,6 +19,8 @@ public class AddTimeTableActivity extends AppCompatActivity {
     String lectureName = "Lecture Name N/A";
     Spinner daySpinner,timeSpinner;
     TextInputLayout  textVenue,textName,textCode,textLectureName;
+    String[] days=new String[]{"Monday","Tuesday","Wednesday","Thursday","Friday"};
+    String[] time=new String[]{"7:00-10:00","10:00-1:00","2:00-5:00","5:00-8:00"};
 
 
     @Override
@@ -29,6 +35,9 @@ public class AddTimeTableActivity extends AppCompatActivity {
         textCode = findViewById(R.id.textInputLayoutUnitCode);
         textLectureName = findViewById(R.id.textInputLayoutLecture);
 
+        daySpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,days));
+        timeSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,time));
+
 
 
 
@@ -36,6 +45,7 @@ public class AddTimeTableActivity extends AppCompatActivity {
 
     public void save(View view){
         day = daySpinner.getSelectedItem().toString();
+        Toast.makeText(this,daySpinner.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
         unitTime = timeSpinner.getSelectedItem().toString();
         lectureName = textLectureName.getEditText().getText().toString();
         venue = textVenue.getEditText().getText().toString();

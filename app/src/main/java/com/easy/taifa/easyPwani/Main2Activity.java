@@ -114,32 +114,32 @@ public class Main2Activity extends AppCompatActivity {
 
 
         if(mondayList.isEmpty()){
-            adapter.addItem(new NoLessonFragment(), "Monday");
+            adapter.addItem(new NoLessonFragmentTwo(), "Monday");
 
         }else {
             adapter.addItem(monday, "Monday");
         }
         if(tuesdayList.isEmpty()){
-            adapter.addItem(new NoLessonFragment(), "Tuesday");
+            adapter.addItem(new NoLessonFragmentTwo(), "Tuesday");
 
         }
         else {
             adapter.addItem(tuesday, "Tuesday");
         }
         if(wednesdayList.isEmpty()){
-            adapter.addItem(new NoLessonFragment(), "Wednesday");
+            adapter.addItem(new NoLessonFragmentTwo(), "Wednesday");
 
         }else {
             adapter.addItem(wednesday, "Wednesday");
         }
         if(thursdayList.isEmpty()){
-            adapter.addItem(new NoLessonFragment(), "Thursday");
+            adapter.addItem(new NoLessonFragmentTwo(), "Thursday");
 
         }
         else {
         adapter.addItem(thursday,"Thursday");}
         if(fridayList.isEmpty()){
-            adapter.addItem(new NoLessonFragment(), "Friday");
+            adapter.addItem(new NoLessonFragmentTwo(), "Friday");
 
         }
         else {

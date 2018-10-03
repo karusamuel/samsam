@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//            MobileAds.initialize(this,"ca-app-pub-1763028000117164~8998796232");
+//
 
 //        myPref = getSharedPreferences("version",MODE_PRIVATE);
 
@@ -135,7 +136,11 @@ public class MainActivity extends AppCompatActivity {
             int i = 0;
         while (i < list.size()) {
             String weekday = new DateFormatSymbols().getWeekdays()[dayOfWeek];
+
+            Toast.makeText(this,weekday,Toast.LENGTH_LONG).show();
             if (list.get(i).getUnitDay().equals(weekday)) {
+
+
 
                 newList.add(list.get(i));
             }
