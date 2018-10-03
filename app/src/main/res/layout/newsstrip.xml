@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:minHeight="100dp"
         android:orientation="horizontal"
 
         android:weightSum="1">
@@ -22,41 +23,54 @@
 
             <TextView
                 android:id="@+id/newsHeadlineTextview"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="19dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginStart="19dp"
+                android:layout_marginLeft="19dp"
                 android:layout_marginTop="13dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:maxLines="1"
+                android:text="TextView "
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:text="TextView" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/shortNewsTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/newsHeadlineTextview"
-                android:layout_alignParentTop="true"
-                android:maxLines="2"
-                android:textSize="14sp"
+                android:layout_above="@+id/newsTimeTextView"
+                android:layout_below="@+id/newsHeadlineTextview"
                 android:layout_alignStart="@+id/newsHeadlineTextview"
-                android:layout_marginTop="40dp"
-                android:text="TextView" />
+                android:layout_alignLeft="@+id/newsHeadlineTextview"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="16dp"
+                android:maxLines="2"
+                android:text="TextView"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/newsTimeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/newsHeadlineTextview"
                 android:layout_alignLeft="@+id/newsHeadlineTextview"
                 android:layout_alignParentBottom="true"
-                android:layout_alignStart="@+id/newsHeadlineTextview"
                 android:text="TextView"
-                android:textSize="10sp"
                 android:textColor="@color/colorAccent"
-                />
+                android:textSize="10sp"
+                android:visibility="gone" />
         </RelativeLayout>
 
         <RelativeLayout

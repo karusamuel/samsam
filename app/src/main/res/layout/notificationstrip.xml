@@ -26,6 +26,7 @@
             android:id="@+id/notificationTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/notificationImage"
             android:layout_toRightOf="@+id/notificationImage"

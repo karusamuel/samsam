@@ -22,5 +22,5 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
-        app:srcCompat="@mipmap/ic_launcherone" />
+        app:srcCompat="@drawable/web_hi_" />
 </RelativeLayout>

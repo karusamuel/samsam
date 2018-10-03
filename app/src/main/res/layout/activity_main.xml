@@ -13,8 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -35,7 +34,31 @@
 
         </android.support.design.widget.TabLayout>
 
+        <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+          android:id="@+id/noLessonBanner"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_centerHorizontal="true"
+          ads:adSize="BANNER"
+          ads:adUnitId=""
+          ads:layout_constraintBottom_toBottomOf="parent"
+          ads:layout_constraintEnd_toEndOf="parent"
+          ads:layout_constraintStart_toStartOf="parent"
+          ads:layout_constraintTop_toTopOf="parent"
+          ads:layout_constraintVertical_bias="0.0">
+
+      </com.google.android.gms.ads.AdView>
+
+  </android.support.constraint.ConstraintLayout>
+
+
         <android.support.v4.view.ViewPager
+
             android:id="@+id/homeViewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -52,6 +75,8 @@
         android:fitsSystemWindows="false"
         app:menu="@menu/navmenu"
         app:headerLayout="@layout/navheader"
-        />
+        >
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
